@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Registration</title>
+    <link rel="stylesheet"
+    href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <h1>Student Registration</h1>
+
+    {% with messages = get_flashed_messages() %}
+        {% for message in messages %}
+            <p>{{ message }}</p>
+        {% endfor %}
+    {% endwith %}
+
+    <form action="/register" method="POST">
+
+        <label>Student Name:</label>
+        <input type="text" name="name"
+        placeholder="Enter Name" required>
+
+        <label>Email:</label>
+        <input type="email" name="email"
+        placeholder="Enter Email" required>
+
+        <label>Password:</label>
+        <input type="password" name="password"
+        placeholder="Enter Password" required>
+
+        <label>Confirm Password:</label>
+        <input type="password" name="confirm_password"
+        placeholder="Confirm Password" required>
+
+        <button type="submit">Register</button>
+
+        <p>Already have an account?
+        <a href="/login">Login Here</a></p>
+
+    </form>
+
+</body>
+</html>

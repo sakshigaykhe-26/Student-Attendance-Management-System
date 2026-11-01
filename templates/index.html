@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Attendance Management</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <h1>Student Attendance Management System</h1>
+
+    <h3>Welcome, {{ name }}!</h3>
+
+    <a href="/logout">Logout</a>
+
+    <form action="/add" method="POST">
+
+        <label>Student Name:</label>
+        <input type="text" name="student_name" required>
+
+        <label>Roll Number:</label>
+        <input type="text" name="roll_number" required>
+
+        <label>Attendance:</label>
+        <select name="status" required>
+            <option value="Present">Present</option>
+            <option value="Absent">Absent</option>
+        </select>
+
+        <button type="submit">Submit Attendance</button>
+
+    </form>
+
+    <h2>Attendance Records</h2>
+
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Student Name</th>
+            <th>Roll Number</th>
+            <th>Status</th>
+            <th>Date</th>
+        </tr>
+
+        {% for record in records %}
+        <tr>
+            <td>{{ record[0] }}</td>
+            <td>{{ record[1] }}</td>
+            <td>{{ record[2] }}</td>
+            <td>{{ record[3] }}</td>
+            <td>{{ record[4] }}</td>
+        </tr>
+        {% endfor %}
+
+    </table>
+
+</body>
+</html>
